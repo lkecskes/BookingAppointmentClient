@@ -2,7 +2,7 @@
 
 Ez a projekt a `Booking Appointment` rendszer frontend része. A célja egy egyszerű, letisztult időpontfoglaló felület biztosítása a végfelhasználók számára.
 
-👉 A backend forráskódja itt található: [booking-appointment-backend](https://github.com/lkecskes/BookingAppointmentAPI)
+A backend forráskódja itt található: [booking-appointment-backend](https://github.com/lkecskes/BookingAppointmentAPI)
 
 # Appointment Booking System
 
