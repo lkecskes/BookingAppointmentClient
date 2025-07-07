@@ -9,7 +9,6 @@
     "test": "ng test",
     "serve:ssr:appointment-booking-system": "node dist/appointment-booking-system/server/server.mjs",
     "generate:api": "swagger-typescript-api -p http://localhost:5001/swagger/v1/swagger.json -o src/api -n apiClient.ts"
-
   },
   "private": true,
   "dependencies": {
