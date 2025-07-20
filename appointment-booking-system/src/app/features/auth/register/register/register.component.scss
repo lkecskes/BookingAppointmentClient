@@ -3,7 +3,7 @@ $form-shadow: rgba(0, 0, 0, 0.1);
 $primary-gradient: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
 $error-color: #e74c3c;
 $success-color: #2ecc71;
-$font-stack: 'Helvetica Neue', Arial, sans-serif;
+$font-stack: "Helvetica Neue", Arial, sans-serif;
 
 .form-container {
   max-width: 500px;
@@ -17,15 +17,16 @@ $font-stack: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .page-wrapper {
-  height: 100vh;              /* full viewport height */
+  height: 100vh; /* full viewport height */
   display: flex;
-  justify-content: center;    /* center horizontally */
-  align-items: center;        /* center vertically */
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
   background: #f5f7fa;
   font-family: $font-stack;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -43,6 +44,74 @@ html, body {
 .form-group {
   position: relative;
   margin-bottom: 1.5rem;
+}
+
+.user-type-group {
+  margin-bottom: 1.5rem;
+
+  .user-type-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: all;
+      width: 0;
+      height: 0;
+      margin: 0;
+    }
+
+    .radio-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        background: #f0f4ff;
+      }
+
+      .radio-circle {
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+        transition: border-color 0.2s, background 0.2s;
+      }
+    }
+
+    input#userTypeUser:checked + .radio-card .radio-circle,
+    input#userTypeCompany:checked + .radio-card .radio-circle {
+      border-color: #6e8efb;
+      background: #6e8efb;
+    }
+
+    input#userTypeUser:checked + .radio-card,
+    input#userTypeCompany:checked + .radio-card {
+      border-color: #6e8efb;
+      background: #eef1fe;
+    }
+  }
 }
 
 .form-group input {
