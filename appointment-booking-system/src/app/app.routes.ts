@@ -5,11 +5,11 @@ export const routes: Routes = [
   {
     path: 'register',
     loadComponent: () =>
-      import('./features/auth/register/register/register.component')
-        .then(m => m.RegisterComponent),
-        providers: [provideHttpClient()] // 👈 add this here
-
+      import('./features/auth/register/register/register.component').then(
+        (m) => m.RegisterComponent
+      ),
+    providers: [provideHttpClient()],
   },
-  { path: '',   redirectTo: 'register', pathMatch: 'full' },
-  { path: '**', redirectTo: 'register' }
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '**', redirectTo: 'register' },
 ];
