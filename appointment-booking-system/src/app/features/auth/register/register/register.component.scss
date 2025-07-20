@@ -1,0 +1,197 @@
+$form-bg: #ffffff;
+$form-shadow: rgba(0, 0, 0, 0.1);
+$primary-gradient: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+$error-color: #e74c3c;
+$success-color: #2ecc71;
+$font-stack: "Helvetica Neue", Arial, sans-serif;
+
+.form-container {
+  max-width: 500px;
+  width: 90vw;
+  padding: 2.5rem 3rem;
+  background: $form-bg;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px $form-shadow;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  height: 100vh; /* full viewport height */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+  background: #f5f7fa;
+  font-family: $font-stack;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  background: $primary-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.user-type-group {
+  margin-bottom: 1.5rem;
+
+  .user-type-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: all;
+      width: 0;
+      height: 0;
+      margin: 0;
+    }
+
+    .radio-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        background: #f0f4ff;
+      }
+
+      .radio-circle {
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+        transition: border-color 0.2s, background 0.2s;
+      }
+    }
+
+    input#userTypeUser:checked + .radio-card .radio-circle,
+    input#userTypeCompany:checked + .radio-card .radio-circle {
+      border-color: #6e8efb;
+      background: #6e8efb;
+    }
+
+    input#userTypeUser:checked + .radio-card,
+    input#userTypeCompany:checked + .radio-card {
+      border-color: #6e8efb;
+      background: #eef1fe;
+    }
+  }
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6e8efb;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  background: $form-bg;
+  padding: 0 0.25rem;
+  color: #888;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: transform 0.2s, font-size 0.2s;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  transform: translateY(-1.6rem);
+  font-size: 0.75rem;
+  color: #6e8efb;
+}
+
+.has-error input {
+  border-color: $error-color;
+}
+
+.error-message {
+  margin-top: 0.25rem;
+  color: $error-color;
+  font-size: 0.85rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: $primary-gradient;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px $form-shadow;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px $form-shadow;
+}
+
+.alert {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.alert.success {
+  background: rgba($success-color, 0.1);
+  color: $success-color;
+}
+
+.alert.error {
+  background: rgba($error-color, 0.1);
+  color: $error-color;
+}
