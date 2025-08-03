@@ -10,6 +10,14 @@ export const routes: Routes = [
       ),
     providers: [provideHttpClient()],
   },
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
-  { path: '**', redirectTo: 'register' },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login/login/login.component').then(
+        (m) => m.LoginComponent
+      ),
+    providers: [provideHttpClient()],
+  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];

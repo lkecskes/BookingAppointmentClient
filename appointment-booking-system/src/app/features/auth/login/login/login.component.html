@@ -1,0 +1,49 @@
+<div class="page-wrapper">
+  <div class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      <h2 class="form-title">Bejelentkezés</h2>
+
+      <div
+        class="form-group"
+        [ngClass]="{ 'has-error': submitted && emailAddress?.invalid }"
+      >
+        <input
+          formControlName="emailAddress"
+          type="email"
+          required
+          autocomplete="username"
+          placeholder=" "
+        />
+        <label for="email">Email</label>
+        <div class="error-message" *ngIf="submitted && emailAddress?.invalid">
+          Helytelen email cím
+        </div>
+      </div>
+
+      <div
+        class="form-group"
+        [ngClass]="{ 'has-error': submitted && password?.invalid }"
+      >
+        <input
+          formControlName="password"
+          type="password"
+          required
+          minlength="6"
+          autocomplete="current-password"
+          placeholder=" "
+        />
+        <label for="password">Jelszó</label>
+        <div class="error-message" *ngIf="submitted && password?.invalid">
+          Legalább 6 karakteres jelszó szükséges
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Bejelentkezés</button>
+
+      <div class="alert success" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>
