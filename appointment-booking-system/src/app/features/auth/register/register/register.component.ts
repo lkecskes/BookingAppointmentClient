@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
       : { mismatch: true };
   }
 
-  get f() {
+  get form() {
     return this.registerForm.controls;
   }
 

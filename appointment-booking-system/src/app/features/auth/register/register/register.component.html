@@ -34,7 +34,7 @@
 
       <div
         class="form-group"
-        [ngClass]="{ 'has-error': submitted && f['firstName'].invalid }"
+        [ngClass]="{ 'has-error': submitted && form['firstName'].invalid }"
       >
         <input
           id="firstName"
@@ -43,36 +43,45 @@
           required
         />
         <label for="firstName">Keresztnév</label>
-        <div class="error-message" *ngIf="submitted && f['firstName'].invalid">
+        <div
+          class="error-message"
+          *ngIf="submitted && form['firstName'].invalid"
+        >
           Keresztnév kötelező
         </div>
       </div>
 
       <div
         class="form-group"
-        [ngClass]="{ 'has-error': submitted && f['lastName'].invalid }"
+        [ngClass]="{ 'has-error': submitted && form['lastName'].invalid }"
       >
         <input id="lastName" formControlName="lastName" type="text" required />
         <label for="lastName">Vezetéknév</label>
-        <div class="error-message" *ngIf="submitted && f['lastName'].invalid">
+        <div
+          class="error-message"
+          *ngIf="submitted && form['lastName'].invalid"
+        >
           Vezetéknév kötelező
         </div>
       </div>
 
       <div
         class="form-group"
-        [ngClass]="{ 'has-error': submitted && f['userName'].invalid }"
+        [ngClass]="{ 'has-error': submitted && form['userName'].invalid }"
       >
         <input id="userName" formControlName="userName" type="text" required />
         <label for="userName">Felhasználónév</label>
-        <div class="error-message" *ngIf="submitted && f['userName'].invalid">
+        <div
+          class="error-message"
+          *ngIf="submitted && form['userName'].invalid"
+        >
           Felhasználónév kötelező
         </div>
       </div>
 
       <div
         class="form-group"
-        [ngClass]="{ 'has-error': submitted && f['emailAddress'].invalid }"
+        [ngClass]="{ 'has-error': submitted && form['emailAddress'].invalid }"
       >
         <input
           id="emailAddress"
@@ -83,7 +92,7 @@
         <label for="emailAddress">Email</label>
         <div
           class="error-message"
-          *ngIf="submitted && f['emailAddress'].invalid"
+          *ngIf="submitted && form['emailAddress'].invalid"
         >
           Helytelen email
         </div>
@@ -91,7 +100,7 @@
 
       <div
         class="form-group"
-        [ngClass]="{ 'has-error': submitted && f['password'].invalid }"
+        [ngClass]="{ 'has-error': submitted && form['password'].invalid }"
       >
         <input
           id="password"
@@ -101,7 +110,10 @@
           minlength="6"
         />
         <label for="password">Jelszó</label>
-        <div class="error-message" *ngIf="submitted && f['password'].invalid">
+        <div
+          class="error-message"
+          *ngIf="submitted && form['password'].invalid"
+        >
           Legalább 6 karakteres jelszó szükséges
         </div>
       </div>
@@ -130,7 +142,7 @@
       <div *ngIf="registerForm.get('userType')?.value === UserType._1">
         <div
           class="form-group"
-          [ngClass]="{ 'has-error': submitted && f['companyName']?.invalid }"
+          [ngClass]="{ 'has-error': submitted && form['companyName'].invalid }"
         >
           <input
             id="companyName"
@@ -141,7 +153,7 @@
           <label for="companyName">Cégnév</label>
           <div
             class="error-message"
-            *ngIf="submitted && f['companyName']?.invalid"
+            *ngIf="submitted && form['companyName']?.invalid"
           >
             Cégnév kötelező
           </div>
@@ -149,7 +161,7 @@
 
         <div
           class="form-group"
-          [ngClass]="{ 'has-error': submitted && f['taxNumber']?.invalid }"
+          [ngClass]="{ 'has-error': submitted && form['taxNumber'].invalid }"
         >
           <input
             id="taxNumber"
@@ -160,7 +172,7 @@
           <label for="taxNumber">Adószám</label>
           <div
             class="error-message"
-            *ngIf="submitted && f['taxNumber']?.invalid"
+            *ngIf="submitted && form['taxNumber']?.invalid"
           >
             Adószám kötelező
           </div>
@@ -168,29 +180,32 @@
 
         <div
           class="form-group"
-          [ngClass]="{ 'has-error': submitted && f['city']?.invalid }"
+          [ngClass]="{ 'has-error': submitted && form['city'].invalid }"
         >
           <input id="city" formControlName="city" type="text" required />
           <label for="city">Város</label>
-          <div class="error-message" *ngIf="submitted && f['city']?.invalid">
+          <div class="error-message" *ngIf="submitted && form['city']?.invalid">
             Város kötelező
           </div>
         </div>
 
         <div
           class="form-group"
-          [ngClass]="{ 'has-error': submitted && f['street']?.invalid }"
+          [ngClass]="{ 'has-error': submitted && form['street'].invalid }"
         >
           <input id="street" formControlName="street" type="text" required />
           <label for="street">Utca</label>
-          <div class="error-message" *ngIf="submitted && f['street']?.invalid">
+          <div
+            class="error-message"
+            *ngIf="submitted && form['street']?.invalid"
+          >
             Utca kötelező
           </div>
         </div>
 
         <div
           class="form-group"
-          [ngClass]="{ 'has-error': submitted && f['postCode']?.invalid }"
+          [ngClass]="{ 'has-error': submitted && form['postCode'].invalid }"
         >
           <input
             id="postCode"
@@ -201,7 +216,7 @@
           <label for="postCode">Irányítószám</label>
           <div
             class="error-message"
-            *ngIf="submitted && f['postCode']?.invalid"
+            *ngIf="submitted && form['postCode']?.invalid"
           >
             Irányítószám kötelező
           </div>
