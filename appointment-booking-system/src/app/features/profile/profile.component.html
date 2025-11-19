@@ -1,0 +1,172 @@
+<div class="profile-container">
+  <h2>Profil adatok</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName">Vezetéknév</label>
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          [ngClass]="{ 'is-invalid': submitted && form['firstName'].errors }"
+        />
+        <div
+          *ngIf="submitted && form['firstName'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="form['firstName'].errors['required']">Kötelező mező</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Keresztnév</label>
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          [ngClass]="{ 'is-invalid': submitted && form['lastName'].errors }"
+        />
+        <div
+          *ngIf="submitted && form['lastName'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="form['lastName'].errors['required']">Kötelező mező</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userName">Felhasználónév</label>
+      <input
+        type="text"
+        id="userName"
+        formControlName="userName"
+        [ngClass]="{ 'is-invalid': submitted && form['userName'].errors }"
+      />
+      <div
+        *ngIf="submitted && form['userName'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="form['userName'].errors['required']">Kötelező mező</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="emailAddress">Email cím</label>
+      <input
+        type="email"
+        id="emailAddress"
+        formControlName="emailAddress"
+        [ngClass]="{ 'is-invalid': submitted && form['emailAddress'].errors }"
+      />
+      <div
+        *ngIf="submitted && form['emailAddress'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="form['emailAddress'].errors['required']">Kötelező mező</div>
+        <div *ngIf="form['emailAddress'].errors['email']">
+          Érvénytelen email cím
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="userProfile?.userType === 1">
+      <div class="form-group">
+        <label for="companyName">Cégnév</label>
+        <input
+          type="text"
+          id="companyName"
+          formControlName="companyName"
+          [ngClass]="{ 'is-invalid': submitted && form['companyName'].errors }"
+        />
+        <div
+          *ngIf="submitted && form['companyName'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="form['companyName'].errors['required']">
+            Kötelező mező
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="taxNumber">Adószám</label>
+        <input
+          type="text"
+          id="taxNumber"
+          formControlName="taxNumber"
+          [ngClass]="{ 'is-invalid': submitted && form['taxNumber'].errors }"
+        />
+        <div
+          *ngIf="submitted && form['taxNumber'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="form['taxNumber'].errors['required']">Kötelező mező</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">Város</label>
+          <input
+            type="text"
+            id="city"
+            formControlName="city"
+            [ngClass]="{ 'is-invalid': submitted && form['city'].errors }"
+          />
+          <div
+            *ngIf="submitted && form['city'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="form['city'].errors['required']">Kötelező mező</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="street">Utca</label>
+          <input
+            type="text"
+            id="street"
+            formControlName="street"
+            [ngClass]="{ 'is-invalid': submitted && form['street'].errors }"
+          />
+          <div
+            *ngIf="submitted && form['street'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="form['street'].errors['required']">Kötelező mező</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="postCode">Irányítószám</label>
+          <input
+            type="text"
+            id="postCode"
+            formControlName="postCode"
+            [ngClass]="{ 'is-invalid': submitted && form['postCode'].errors }"
+          />
+          <div
+            *ngIf="submitted && form['postCode'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="form['postCode'].errors['required']">Kötelező mező</div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <button type="submit" class="btn" [disabled]="loading">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+      {{ loading ? "Mentés..." : "Mentés" }}
+    </button>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

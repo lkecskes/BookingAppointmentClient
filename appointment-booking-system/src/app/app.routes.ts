@@ -1,7 +1,17 @@
 import { provideHttpClient } from '@angular/common/http';
 import { Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./features/profile/profile.component').then(
+        (m) => m.ProfileComponent
+      ),
+    providers: [provideHttpClient()],
+    canActivate: [AuthGuard],
+  },
   {
     path: 'register',
     loadComponent: () =>

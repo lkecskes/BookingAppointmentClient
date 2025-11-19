@@ -13,6 +13,7 @@ import {
 import { ExtractErrorMessageService } from '../../../../shared/services/extract-error-message';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private client: ApiClient,
-    private errorService: ExtractErrorMessageService
+    private errorService: ExtractErrorMessageService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       emailAddress: ['', [Validators.required, Validators.email]],
@@ -76,13 +78,21 @@ export class LoginComponent implements OnInit {
   }
 
   private handleResponse(response: LoginResponse): void {
-    if (!response.isSuccess) {
-      this.errorMessage = response?.message ?? '';
+    if (!response.isSuccess || !response.token) {
+      this.errorMessage = response?.message ?? 'Sikertelen bejelentkezés';
       return;
     }
+
+    // Token mentése
+    localStorage.setItem('token', response.token);
 
     this.successMessage = response.message || 'Sikeres belépés';
     this.loginForm.reset();
     this.submitted = false;
+
+    // Átirányítás a profile oldalra
+    setTimeout(() => {
+      this.router.navigate(['/profile']);
+    }, 1000); // 1 másodperc késleltetés, hogy a felhasználó lássa a sikeres üzenetet
   }
 }
